@@ -1,0 +1,45 @@
+﻿@model IKDDS_Manager.ViewModels.IKDDSFormViewModel
+@{
+    ViewData["Title"] = "IKDDSForm";
+}
+
+<h2>Wprowadź nowy numer IKD.DS</h2>
+@using (Html.BeginForm("IKDDSForm", "IKDDSModel", FormMethod.Post, new { @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary()
+
+    @Html.LabelFor(x => x.IKDDSModel.IKDDS)
+    @Html.TextBoxFor(x => x.IKDDSModel.IKDDS, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.IKDDSModel.IKDDS)
+
+    @Html.LabelFor(x => x.IKDDSModel.OfficerName)
+    @Html.TextBoxFor(x => x.IKDDSModel.OfficerName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.IKDDSModel.IKDDS)
+
+
+    @Html.LabelFor(x => x.IKDDSModel.InvestigationTypeId)
+    @Html.DropDownListFor(x => x.IKDDSModel.InvestigationInitiateTypeId, new SelectList(Model.investigationTypes, "Id", "Name"), "-----", new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.IKDDSModel.IKDDS)
+
+
+    @Html.LabelFor(x => x.IKDDSModel.RpsNumber)
+    @Html.TextBoxFor(x => x.IKDDSModel.RpsNumber, new { @class = "form-control" })
+
+
+    @Html.LabelFor(x => x.IKDDSModel.RsdNumber)
+    @Html.TextBoxFor(x => x.IKDDSModel.RsdNumber, new { @class = "form-control" })
+
+
+
+    @Html.LabelFor(x => x.IKDDSModel.EntryData)
+    @Html.TextBoxFor(x => x.IKDDSModel.EntryData, "{0:d MM yyyy}", new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.IKDDSModel.IKDDS)
+
+
+    @Html.LabelFor(x => x.IKDDSModel.FinalData)
+    @Html.TextBoxFor(x => x.IKDDSModel.FinalData, "{0:d MM yyyy}", new { @class = "form-control" })
+
+    @Html.HiddenFor(m => m.IKDDSModel.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-default">Zatwierdź</button>
+}
