@@ -11,8 +11,8 @@ namespace IKDDS_Manager.ViewModels
     public class IKDDSFormViewModel
     {
         public IKDDSModel IKDDSModel { get; set; }
-        public IEnumerable<InvestigationType> investigationTypes;
-        public IEnumerable<InvestigationInitiateType> investigationInitiateTypes;
+        public IEnumerable<InvestigationType> InvestigationType;
+        //public IEnumerable<InvestigationInitiateType> investigationInitiateTypes;
 
     }
 }

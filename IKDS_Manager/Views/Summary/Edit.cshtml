@@ -1,0 +1,44 @@
+﻿@model IKDDSModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Zmiana stanu postępowania</h2>
+
+    @using (Html.BeginForm("IKDDSForm", "IKDDSModel", FormMethod.Post))
+    {
+        @Html.LabelFor(x => x.IKDDS)
+        @Html.TextBoxFor(x => x.IKDDS, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.IKDDS)
+
+        @Html.LabelFor(x => x.OfficerName)
+        @Html.TextBoxFor(x => x.OfficerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.IKDDS)
+
+
+
+
+        @Html.LabelFor(x => x.RpsNumber)
+        @Html.TextBoxFor(x => x.RpsNumber, new { @class = "form-control" })
+
+
+        @Html.LabelFor(x => x.RsdNumber)
+        @Html.TextBoxFor(x => x.RsdNumber, new { @class = "form-control" })
+
+        @Html.LabelFor(x => x.FinalOfInvestigation)
+        @Html.TextAreaFor(x => x.FinalOfInvestigation, new { @class = "form-control" })
+
+
+        @Html.LabelFor(x => x.EntryData)
+        @Html.TextBoxFor(x => x.EntryData, "{0:d MM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.IKDDS)
+
+
+        @Html.LabelFor(x => x.FinalData)
+        @Html.TextBoxFor(x => x.FinalData, "{0:d MM yyyy}", new { @class = "form-control" })
+
+        @Html.HiddenFor(m => m.Id)
+
+        <button type="submit" class="btn btn-primary" >Zapisz</button>
+    }
+

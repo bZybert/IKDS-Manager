@@ -17,18 +17,24 @@ namespace IKDS_Manager.Controllers
         {
             _context = new EFCContext();
         }
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
 
         [HttpGet]
-        public IActionResult IKDDSForm()
+        public IActionResult New()
         {
-            var invTypes = _context.InvestigationTypes.ToList();
+            
+            var invTypes = _context.InvestigationType.ToList();
             //var invInit = _context.InvestigationInitiateTypes.ToList();
 
             var viewModel = new IKDDSFormViewModel()
             {
-                investigationTypes = invTypes,
+                IKDDSModel = new IKDDSModel(),
+                InvestigationType = invTypes,
                 //investigationInitiateTypes = invInit
-            };
+            }; 
             return View(viewModel);
         }
 
@@ -37,10 +43,21 @@ namespace IKDS_Manager.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return Content(ikddsmodel.InvestigationInitiateTypeId.ToString());
+                var invTypes = _context.InvestigationType.ToList();
+                //var invInit = _context.InvestigationInitiateTypes.ToList();
+
+                var viewModel = new IKDDSFormViewModel()
+                {
+                    IKDDSModel = new IKDDSModel(),
+                    InvestigationType = invTypes,
+                    //investigationInitiateTypes = invInit
+                };
+                return View("New" ,viewModel);
             }
 
-            return View();
+            _context.IKDDSModels.Add(ikddsmodel);
+            _context.SaveChanges();
+            return View("New");
         }
 
     }

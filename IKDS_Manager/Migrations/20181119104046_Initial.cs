@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IKDDS_Manager.Migrations
 {
-    public partial class Initiation : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -48,28 +48,23 @@ namespace IKDDS_Manager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "InvestigationInitiateTypes",
+                name: "IKDDSModels",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    IKDDS = table.Column<string>(nullable: true),
+                    OfficerName = table.Column<string>(nullable: true),
+                    RsdNumber = table.Column<string>(nullable: true),
+                    RpsNumber = table.Column<string>(nullable: true),
+                    EntryData = table.Column<DateTime>(nullable: false),
+                    FinalData = table.Column<DateTime>(nullable: false),
+                    JoinWithOtherInvestigation = table.Column<bool>(nullable: false),
+                    FinalOfInvestigation = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_InvestigationInitiateTypes", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "InvestigationTypes",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_InvestigationTypes", x => x.Id);
+                    table.PrimaryKey("PK_IKDDSModels", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -178,42 +173,6 @@ namespace IKDDS_Manager.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "IKDDSModels",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    IKDDS = table.Column<string>(nullable: true),
-                    OfficerName = table.Column<string>(nullable: true),
-                    InvestigationTypeId1 = table.Column<string>(nullable: true),
-                    InvestigationTypeId = table.Column<byte>(nullable: false),
-                    InvestigationInitiateTypeId1 = table.Column<int>(nullable: true),
-                    InvestigationInitiateTypeId = table.Column<byte>(nullable: false),
-                    RsdNumber = table.Column<string>(nullable: true),
-                    RpsNumber = table.Column<string>(nullable: true),
-                    EntryData = table.Column<DateTime>(nullable: false),
-                    FinalData = table.Column<DateTime>(nullable: false),
-                    JoinWithOtherInvestigation = table.Column<bool>(nullable: false),
-                    FinalOfInvestigation = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_IKDDSModels", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_IKDDSModels_InvestigationInitiateTypes_InvestigationInitiateTypeId1",
-                        column: x => x.InvestigationInitiateTypeId1,
-                        principalTable: "InvestigationInitiateTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_IKDDSModels_InvestigationTypes_InvestigationTypeId1",
-                        column: x => x.InvestigationTypeId1,
-                        principalTable: "InvestigationTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -252,16 +211,6 @@ namespace IKDDS_Manager.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_IKDDSModels_InvestigationInitiateTypeId1",
-                table: "IKDDSModels",
-                column: "InvestigationInitiateTypeId1");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_IKDDSModels_InvestigationTypeId1",
-                table: "IKDDSModels",
-                column: "InvestigationTypeId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -289,12 +238,6 @@ namespace IKDDS_Manager.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "InvestigationInitiateTypes");
-
-            migrationBuilder.DropTable(
-                name: "InvestigationTypes");
         }
     }
 }

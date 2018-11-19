@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace IKDDS_Manager.Migrations
 {
     [DbContext(typeof(EFCContext))]
-    [Migration("20181115105142_AddInvestigationInitiationType")]
-    partial class AddInvestigationInitiationType
+    [Migration("20181119104046_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,19 +20,6 @@ namespace IKDDS_Manager.Migrations
                 .HasAnnotation("ProductVersion", "2.1.4-rtm-31024")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("IKDDS_Manager.Models.InvestigationInitiateType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("InvestigationInitiateTypes");
-                });
 
             modelBuilder.Entity("IKDS_Manager.Models.IKDDSModel", b =>
                 {
@@ -48,14 +35,6 @@ namespace IKDDS_Manager.Migrations
 
                     b.Property<string>("IKDDS");
 
-                    b.Property<byte>("InvestigationInitiateTypeId");
-
-                    b.Property<int?>("InvestigationInitiateTypeId1");
-
-                    b.Property<byte>("InvestigationTypeId");
-
-                    b.Property<string>("InvestigationTypeId1");
-
                     b.Property<bool>("JoinWithOtherInvestigation");
 
                     b.Property<string>("OfficerName");
@@ -66,23 +45,7 @@ namespace IKDDS_Manager.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InvestigationInitiateTypeId1");
-
-                    b.HasIndex("InvestigationTypeId1");
-
                     b.ToTable("IKDDSModels");
-                });
-
-            modelBuilder.Entity("IKDS_Manager.Models.InvestigationType", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("InvestigationTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -244,17 +207,6 @@ namespace IKDDS_Manager.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("IKDS_Manager.Models.IKDDSModel", b =>
-                {
-                    b.HasOne("IKDDS_Manager.Models.InvestigationInitiateType", "InvestigationInitiateType")
-                        .WithMany()
-                        .HasForeignKey("InvestigationInitiateTypeId1");
-
-                    b.HasOne("IKDS_Manager.Models.InvestigationType", "InvestigationType")
-                        .WithMany()
-                        .HasForeignKey("InvestigationTypeId1");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

@@ -19,17 +19,17 @@ namespace IKDDS_Manager.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("IKDDS_Manager.Models.InvestigationInitiateType", b =>
+            modelBuilder.Entity("IKDDS_Manager.Models.InvestigationType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Type");
 
                     b.HasKey("Id");
 
-                    b.ToTable("InvestigationInitiateTypes");
+                    b.ToTable("InvestigationType");
                 });
 
             modelBuilder.Entity("IKDS_Manager.Models.IKDDSModel", b =>
@@ -46,13 +46,7 @@ namespace IKDDS_Manager.Migrations
 
                     b.Property<string>("IKDDS");
 
-                    b.Property<byte>("InvestigationInitiateTypeId");
-
-                    b.Property<int?>("InvestigationInitiateTypeId1");
-
-                    b.Property<byte>("InvestigationTypeId");
-
-                    b.Property<string>("InvestigationTypeId1");
+                    b.Property<int?>("InvestigationTypeId");
 
                     b.Property<bool>("JoinWithOtherInvestigation");
 
@@ -64,23 +58,9 @@ namespace IKDDS_Manager.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InvestigationInitiateTypeId1");
-
-                    b.HasIndex("InvestigationTypeId1");
+                    b.HasIndex("InvestigationTypeId");
 
                     b.ToTable("IKDDSModels");
-                });
-
-            modelBuilder.Entity("IKDS_Manager.Models.InvestigationType", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("InvestigationTypes");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -246,13 +226,9 @@ namespace IKDDS_Manager.Migrations
 
             modelBuilder.Entity("IKDS_Manager.Models.IKDDSModel", b =>
                 {
-                    b.HasOne("IKDDS_Manager.Models.InvestigationInitiateType", "InvestigationInitiateType")
+                    b.HasOne("IKDDS_Manager.Models.InvestigationType", "InvestigationType")
                         .WithMany()
-                        .HasForeignKey("InvestigationInitiateTypeId1");
-
-                    b.HasOne("IKDS_Manager.Models.InvestigationType", "InvestigationType")
-                        .WithMany()
-                        .HasForeignKey("InvestigationTypeId1");
+                        .HasForeignKey("InvestigationTypeId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

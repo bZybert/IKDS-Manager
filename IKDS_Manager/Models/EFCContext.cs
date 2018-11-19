@@ -10,9 +10,9 @@ namespace IKDDS_Manager.Models
 {
     public class EFCContext : IdentityDbContext
     {
-        public DbSet<IKDDSModel> IKDDSModels { get; set; }
-        public DbSet<InvestigationInitiateType> InvestigationInitiateTypes { get; set; }
-        public DbSet<InvestigationType> InvestigationTypes{ get; set; }
+       public DbSet<IKDDSModel> IKDDSModels { get; set; }
+      // public DbSet<InvestigationInitiateType> InvestigationInitiateTypes { get; set; }
+       public DbSet<InvestigationType> InvestigationType { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

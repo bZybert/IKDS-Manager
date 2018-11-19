@@ -1,24 +1,42 @@
-﻿@model IKDS_Manager.Models.IKDDSModel
+﻿@model IKDDS_Manager.ViewModels.MainTableViewModel
 @{
     ViewData["Title"] = "MainTable";
 }
 
-<h2>MainTable</h2>
+<h2>Lista wszystkich postępowań</h2>
 
 <table class="table table-bordered">
     <tr>
         <th>#</th>
         <th>Numer IKD.DS.560.</th>
         <th>Prowadzący postępowanie</th>
-        <th>Nr RSD</th>
-        <th>Nr RPS</th>
+        <th>Nr RPS-I</th>
+        <th>Nr RSD-I</th>
         <th>Data Wszczęcia</th>
         <th>Zakończyć do dnia</th>
         <th>Tok postępowania</th>
         <th>Sposób zakończenia</th>
-        <th>Modyfikuj</th>
-        <th>Usuń</th>
+        <th></th>
+        <th></th>
     </tr>
+    
+        @foreach (var el in Model.IKDDSModels)
+        {
+            <tr>
+                <th>@el.Id</th>
+                <th>@el.IKDDS</th>
+                <th>@el.OfficerName</th>
+                <th>@el.RpsNumber</th>
+                <th>@el.RsdNumber</th>
+                <th>@el.EntryData</th>
+                <th>@el.FinalData</th>
 
+                <th>@el.FinalOfInvestigation</th>
+                <th>@Html.ActionLink("Edytuj", "Edit", "Summary", new { id = el.Id })</th>
+                <th>@Html.ActionLink("Usuń", "Delete", "Summary", new { id = el.Id })</th>
+
+            </tr>
+        }
+    
 </table>
 
