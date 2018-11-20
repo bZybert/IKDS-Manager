@@ -1,4 +1,4 @@
-﻿@model IKDDS_Manager.ViewModels.IKDDSFormViewModel
+﻿@model IKDDS_Manager.ViewModels.MainTableViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,6 +9,17 @@
     <tr>
         <th>#</th>
         <th>Zbliża się termin zakończenia</th>
+        <th>Przewidywana data zakończenia</th>
         <th>Usuń</th>
     </tr>
+
+    @foreach (var el in Model.IKDDSModels)
+    {
+        <tr>
+            <th>@el.Id</th>
+            <th>@el.IKDDS</th>
+            <th>@el.FinalData</th>
+            <th>Usuń</th>
+        </tr>
+    }
 </table>

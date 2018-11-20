@@ -14,8 +14,7 @@
     @Html.TextBoxFor(x => x.IKDDSModel.OfficerName, new { @class = "form-control" })
     @Html.ValidationMessageFor(x => x.IKDDSModel.IKDDS)
 
-    @Html.LabelFor(x => x.IKDDSModel.InvestigationType)
-    @Html.DropDownListFor(x => x.IKDDSModel.InvestigationType, new SelectList(Model.InvestigationType, "Id", "Type"), new { @class = "form-control" })
+   
 
     @Html.LabelFor(x => x.IKDDSModel.RpsNumber)
     @Html.TextBoxFor(x => x.IKDDSModel.RpsNumber, new { @class = "form-control" })
@@ -30,17 +29,10 @@
     @Html.ValidationMessageFor(x => x.IKDDSModel.IKDDS)
 
 
-    @Html.LabelFor(x => x.IKDDSModel.FinalData)
-    @Html.TextBoxFor(x => x.IKDDSModel.FinalData, "{0:d MM yyyy}", new { @class = "form-control" })
-
-    @Html.LabelFor(x => x.IKDDSModel.InvestigationType)
-    @Html.TextBoxFor(x => x.IKDDSModel.InvestigationType, new { @class = "form-control" })
-
-    @Html.LabelFor(x => x.IKDDSModel.FinalOfInvestigation)
-    @Html.TextAreaFor(x => x.IKDDSModel.FinalOfInvestigation, new { @class = "form-control" })
+   
 
     @Html.HiddenFor(m => m.IKDDSModel.Id)
 
-    <button type="submit">Zapisz</button>
+    <button type="submit" class="btn btn-primary" >Zapisz</button>
 }
 

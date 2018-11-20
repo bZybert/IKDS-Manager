@@ -43,21 +43,20 @@ namespace IKDS_Manager.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var invTypes = _context.InvestigationType.ToList();
-                //var invInit = _context.InvestigationInitiateTypes.ToList();
-
-                var viewModel = new IKDDSFormViewModel()
-                {
-                    IKDDSModel = new IKDDSModel(),
-                    InvestigationType = invTypes,
-                    //investigationInitiateTypes = invInit
-                };
-                return View("New" ,viewModel);
+                return View("New");
+              
+            }
+            if(ikddsmodel.RpsNumber != null)
+            {
+                ikddsmodel.FinalData = ikddsmodel.EntryData.AddDays(30);
+            }else if(ikddsmodel.RsdNumber != null)
+            {
+                ikddsmodel.FinalData = ikddsmodel.EntryData.AddDays(60);
             }
 
             _context.IKDDSModels.Add(ikddsmodel);
             _context.SaveChanges();
-            return View("New");
+            return RedirectToAction("MainTable", "Summary");
         }
 
     }
