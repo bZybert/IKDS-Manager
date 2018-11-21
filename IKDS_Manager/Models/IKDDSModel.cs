@@ -1,4 +1,5 @@
 ﻿using IKDDS_Manager.Models;
+using Microsoft.VisualStudio.Web.CodeGeneration.Contracts.Messaging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,7 +12,7 @@ namespace IKDS_Manager.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Pole IKD.DS jest wymagane")]
         [Display(Name = "Numer IKD.DS.560.")]
         public string IKDDS { get; set; }
 

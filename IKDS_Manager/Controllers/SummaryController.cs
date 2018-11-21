@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using IKDDS_Manager.Models;
 using IKDDS_Manager.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace IKDDS_Manager.Controllers
 {
@@ -24,8 +25,8 @@ namespace IKDDS_Manager.Controllers
         [HttpGet]
         public IActionResult MainTable()
         {
-            var invest = _context.IKDDSModels.ToList();
-            
+            var invest = _context.IKDDSModels.Include(x => x.InvestigationType).ToList();
+
 
             var viewModel = new MainTableViewModel
             {
@@ -49,7 +50,7 @@ namespace IKDDS_Manager.Controllers
             _context.IKDDSModels.Remove(toDel);
             _context.SaveChanges();
 
-            return View("MainTable");
+            return RedirectToAction("MainTable");
         }
     }
 }

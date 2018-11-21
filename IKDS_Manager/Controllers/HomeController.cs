@@ -35,7 +35,11 @@ namespace IKDS_Manager.Controllers
                
             }
 
-            return View(viewModel);
+            return View();
+        }
+        public IActionResult Reminder()
+        {
+            return View();
         }
 
         

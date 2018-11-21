@@ -3,23 +3,4 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h2>Przypomnienie</h2>
-
-<table class="table table-bordered">
-    <tr>
-        <th>#</th>
-        <th>Zbliża się termin zakończenia</th>
-        <th>Przewidywana data zakończenia</th>
-        <th>Usuń</th>
-    </tr>
-
-    @foreach (var el in Model.IKDDSModels)
-    {
-        <tr>
-            <th>@el.Id</th>
-            <th>@el.IKDDS</th>
-            <th>@el.FinalData</th>
-            <th>Usuń</th>
-        </tr>
-    }
-</table>
+<h2>Strona główna</h2>

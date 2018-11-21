@@ -2,19 +2,23 @@
 @{
     ViewData["Title"] = "New";
 }
+<h2>Wprowadź nowy numer sprawy</h2>
 
-
-@using (Html.BeginForm("IKDDSForm", "IKDDSModel", FormMethod.Post))
+@using (Html.BeginForm("IKDDSForm", "IKDDSModel", FormMethod.Post, new { @class = "form-group new-form" }))
 {
+    @Html.ValidationSummary(true, "Pola zaznaczone na czerwono są wymagane")
+
+
     @Html.LabelFor(x => x.IKDDSModel.IKDDS)
     @Html.TextBoxFor(x => x.IKDDSModel.IKDDS, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.IKDDSModel.IKDDS)
+
+
 
     @Html.LabelFor(x => x.IKDDSModel.OfficerName)
     @Html.TextBoxFor(x => x.IKDDSModel.OfficerName, new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.IKDDSModel.IKDDS)
 
-   
+
+
 
     @Html.LabelFor(x => x.IKDDSModel.RpsNumber)
     @Html.TextBoxFor(x => x.IKDDSModel.RpsNumber, new { @class = "form-control" })
@@ -25,14 +29,31 @@
 
 
     @Html.LabelFor(x => x.IKDDSModel.EntryData)
-    @Html.TextBoxFor(x => x.IKDDSModel.EntryData, "{0:d MM yyyy}", new { @class = "form-control" })
-    @Html.ValidationMessageFor(x => x.IKDDSModel.IKDDS)
+    @Html.TextBoxFor(x => x.IKDDSModel.EntryData, "{0:d MM yyyy}", new { @class = "form -control", @id = "date", @name = "date" })
+    @Html.ValidationMessageFor(x => x.IKDDSModel.EntryData)
 
 
-   
+    @Html.LabelFor(x => x.IKDDSModel.FinalData)
+    @Html.TextBoxFor(x => x.IKDDSModel.FinalData, "{0:d MM yyyy}", new { @class = "form-control" })
 
     @Html.HiddenFor(m => m.IKDDSModel.Id)
 
-    <button type="submit" class="btn btn-primary" >Zapisz</button>
+    <button type="submit" class="btn btn-primary">Zapisz</button>
 }
 
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        var date_input = $('#date'); //our date input has the name "date"
+        console.log(date_input);
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        var options = {
+            format: 'yy-mm-dd',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        };
+        date_input.datepicker(options);
+    })
+</script>

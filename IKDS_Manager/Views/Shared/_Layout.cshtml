@@ -30,10 +30,10 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Strona główna</a></li>
+                    <li><a asp-area="" asp-controller="Home" asp-action="Reminder">Przypomienia</a></li>
                     <li><a asp-area="" asp-controller="IKDDSModel" asp-action="New">Formularz</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="About">RSD</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">RPS</a></li>
+                    <li><a asp-area="" asp-controller="RPS" asp-action="RpsTable">RPS</a></li>
+                    <li><a asp-area="" asp-controller="RSD" asp-action="RsdTable">RSD</a></li>
                     <li><a asp-area="" asp-controller="Summary" asp-action="MainTable">Wszystkie</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Rejestracja</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Logowanie</a></li>
@@ -72,7 +72,11 @@
         </script>
         <script src="~/js/site.min.js" asp-append-version="true"></script>
     </environment>
-
+    <script src="~/lib/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+    <link href="~/lib/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet" />
+    <link href="~/lib/jquery-ui-1.12.1.custom/jquery-ui.theme.min.css" rel="stylesheet" />
+    <link href="~/lib/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="~/lib/jquery-ui-1.12.1.custom/jquery-ui.min.css" rel="stylesheet" />
     @RenderSection("Scripts", required: false)
 </body>
 </html>

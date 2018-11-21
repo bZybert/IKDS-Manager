@@ -25,7 +25,7 @@ namespace IKDS_Manager.Controllers
         [HttpGet]
         public IActionResult New()
         {
-            
+
             var invTypes = _context.InvestigationType.ToList();
             //var invInit = _context.InvestigationInitiateTypes.ToList();
 
@@ -34,7 +34,7 @@ namespace IKDS_Manager.Controllers
                 IKDDSModel = new IKDDSModel(),
                 InvestigationType = invTypes,
                 //investigationInitiateTypes = invInit
-            }; 
+            };
             return View(viewModel);
         }
 
@@ -44,14 +44,22 @@ namespace IKDS_Manager.Controllers
             if (!ModelState.IsValid)
             {
                 return View("New");
-              
+
             }
-            if(ikddsmodel.RpsNumber != null)
+            if (ikddsmodel.RpsNumber != null)
             {
                 ikddsmodel.FinalData = ikddsmodel.EntryData.AddDays(30);
-            }else if(ikddsmodel.RsdNumber != null)
+                //ikddsmodel.InvestigationType.Type;
+            }
+            else if (ikddsmodel.RsdNumber != null)
             {
                 ikddsmodel.FinalData = ikddsmodel.EntryData.AddDays(60);
+               // ikddsmodel.InvestigationType.Type = "RSD";
+            }
+            else if ((ikddsmodel.RpsNumber != null) && (ikddsmodel.RsdNumber != null))
+            {
+                ikddsmodel.FinalData = ikddsmodel.EntryData.AddDays(60);
+                //ikddsmodel.InvestigationType.Type = "RPS/RSD";
             }
 
             _context.IKDDSModels.Add(ikddsmodel);

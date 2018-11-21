@@ -35,3 +35,17 @@ body {
         display: none;
     }
 }
+.field-validation-error{
+    color: red;
+}
+.input-validation-error{
+    border: 1px solid red;
+}
+
+.new-form{
+    width: 60%
+}
+.validation-summary-errors{
+    color:red
+}
+
