@@ -1,19 +1,42 @@
-﻿
+﻿@model IKDDS_Manager.ViewModels.MainTableViewModel
 @{
     ViewData["Title"] = "Reminder";
 }
 
 
-<h2>Przypomnienie</h2>
+<h2>Zbliża się termin zakończenia</h2>
 
 <table class="table table-bordered">
     <tr>
-        <th>#</th>
-        <th>Zbliża się termin zakończenia</th>
+        <th>IKD.DS</th>
+        <th>Aktualny status</th>
+        <th>Nr Rps</th>
+        <th>Nr Rsd</th>
         <th>Przewidywana data zakończenia</th>
+        <th>Edytuj</th>
         <th>Usuń</th>
     </tr>
 
+    @{
+        var today = DateTime.Now.AddDays(6); }
+
+    @foreach (var el in Model.IKDDSModels)
+    {
+        if (el.FinalData <= today)
+        {
+            <tr>
+                <th>@el.IKDDS</th>
+                <th>@el.InvestigationType</th>
+                <th>@el.RpsNumber</th>
+                <th>@el.RsdNumber</th>
+                <th>@el.FinalData</th>
+                <th>@Html.ActionLink("Edytuj", "Edit", "Summary", new { id = el.Id })</th>
+                <th>@Html.ActionLink("Usuń", "Delete", "Summary", new { id = el.Id })</th>
+            </tr>
+        }
+        
+
+    }
 
 </table>
 

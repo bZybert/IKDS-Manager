@@ -26,20 +26,28 @@ namespace IKDS_Manager.Controllers
        
         public IActionResult Index()
         {
-            var closeToEnd = _context.IKDDSModels.ToList();
-            var viewModel = new List<IKDDSModel>();
-            foreach(var el in closeToEnd)
-            {
-                TimeSpan result = DateTime.Now - el.FinalData;
-                
-               
-            }
+           
 
             return View();
         }
+        [HttpGet]
         public IActionResult Reminder()
         {
-            return View();
+            var today = DateTime.Now.AddDays(6);
+            var reminder = _context.IKDDSModels.ToList();
+            
+
+            if (reminder != null)
+            {
+                
+                var viewModel = new MainTableViewModel
+                {
+                     IKDDSModels = reminder,
+                };
+                return View(viewModel);
+            }
+            
+            return View("Index");
         }
 
         

@@ -4,14 +4,16 @@ using IKDDS_Manager.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IKDDS_Manager.Migrations
 {
     [DbContext(typeof(EFCContext))]
-    partial class EFCContextModelSnapshot : ModelSnapshot
+    [Migration("20181122095000_IkddsModelInsertOn")]
+    partial class IkddsModelInsertOn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
