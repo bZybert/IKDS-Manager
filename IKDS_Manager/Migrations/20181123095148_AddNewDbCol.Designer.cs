@@ -4,14 +4,16 @@ using IKDDS_Manager.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace IKDDS_Manager.Migrations
 {
     [DbContext(typeof(EFCContext))]
-    partial class EFCContextModelSnapshot : ModelSnapshot
+    [Migration("20181123095148_AddNewDbCol")]
+    partial class AddNewDbCol
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -55,12 +57,12 @@ namespace IKDDS_Manager.Migrations
 
                     b.Property<bool>("JoinWithOtherInvestigation");
 
-                    b.Property<DateTime?>("OZDate");
+                    b.Property<DateTime>("OZDate");
 
                     b.Property<string>("OfficerName")
                         .IsRequired();
 
-                    b.Property<DateTime?>("RealEndDate");
+                    b.Property<DateTime>("RealEndDate");
 
                     b.Property<string>("RpsNumber");
 

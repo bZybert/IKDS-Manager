@@ -10,7 +10,7 @@
 
 
     @Html.LabelFor(x => x.IKDDSModel.IKDDS)
-    @Html.TextBoxFor(x => x.IKDDSModel.IKDDS, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.IKDDSModel.IKDDS, new { @class = "form-control"})
 
 
 
@@ -29,12 +29,12 @@
 
 
     @Html.LabelFor(x => x.IKDDSModel.EntryData)
-    @Html.TextBoxFor(x => x.IKDDSModel.EntryData, "{0:d MM yyyy}", new { @class = "form-control date-p", @id = "date", @name = "date" })
+    @Html.TextBoxFor(x => x.IKDDSModel.EntryData, "{0:d MM yyyy}", new { @class = "form-control date-p", @id = "date", @name = "date", placeholder = "data zakończenia" })
     @Html.ValidationMessageFor(x => x.IKDDSModel.EntryData)
 
 
     @Html.LabelFor(x => x.IKDDSModel.FinalData)
-    @Html.TextBoxFor(x => x.IKDDSModel.FinalData, "{0:d MM yyyy}", new { @class = "form-control date-p", })
+    @Html.TextBoxFor(x => x.IKDDSModel.FinalData, "{0:d MM yyyy}", new { @class = "form-control date-p", placeholder = "data zakończenia" })
 
     @Html.HiddenFor(m => m.IKDDSModel.Id)
 

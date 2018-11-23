@@ -8,6 +8,7 @@
 
 <table class="table table-bordered">
     <tr>
+        <th>Lp</th>
         <th>IKD.DS</th>
         <th>Aktualny status</th>
         <th>Nr Rps</th>
@@ -16,7 +17,7 @@
         <th>Edytuj</th>
         <th>Usuń</th>
     </tr>
-
+    @{ int count = 0;}
     @{
         var today = DateTime.Now.AddDays(6); }
 
@@ -24,17 +25,18 @@
     {
         if (el.FinalData <= today)
         {
-            <tr>
-                <th>@el.IKDDS</th>
-                <th>@el.InvestigationType</th>
-                <th>@el.RpsNumber</th>
-                <th>@el.RsdNumber</th>
-                <th>@el.FinalData</th>
-                <th>@Html.ActionLink("Edytuj", "Edit", "Summary", new { id = el.Id })</th>
-                <th>@Html.ActionLink("Usuń", "Delete", "Summary", new { id = el.Id })</th>
-            </tr>
+    <tr>
+        <th>@(++count)</th>
+        <th>@el.IKDDS</th>
+        <th>@el.InvestigationType</th>
+        <th>@el.RpsNumber</th>
+        <th>@el.RsdNumber</th>
+        <th>@el.FinalData.ToString("dd-MM-yyyy")</th>
+        <th>@Html.ActionLink("Edytuj", "Edit", "Summary", new { id = el.Id })</th>
+        <th>@Html.ActionLink("Usuń", "Delete", "Summary", new { id = el.Id })</th>
+    </tr>
         }
-        
+
 
     }
 

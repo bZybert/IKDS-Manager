@@ -6,38 +6,41 @@
 <h2>RsdTable</h2>
 <table class="table table-bordered">
     <tr>
-        <th>#</th>
+        <th>L.dz.</th>
+        <th>Data wprowadzenia</th>
         <th>Numer IKD.DS.560.</th>
         <th>Prowadzący postępowanie</th>
 
         <th>Nr RPS-I</th>
         <th>Nr RSD-I</th>
-        <th>Data Wszczęcia</th>
+        <th>Data podjęcia</th>
         <th>Zakończyć do dnia</th>
-
+        <th>Kwalifikacja prawna</th>
         <th>Sposób zakończenia</th>
         <th></th>
         <th></th>
     </tr>
-
+    @{ int count = 0;}
     @foreach (var el in Model.IKDDSModels)
     {
         if (el.RsdNumber != null)
         {
-            <tr class="warning">
-                <th>@el.Id</th>
-                <th>@el.IKDDS</th>
-                <th>@el.OfficerName</th>
+    <tr class="warning">
+        <th>@(++count)</th>
+        <th>@el.AddedInSystem.ToString("dd-MM-yyyy")</th>
+        <th>@el.IKDDS</th>
+        <th>@el.OfficerName</th>
 
-                <th>@el.RpsNumber</th>
-                <th>@el.RsdNumber</th>
-                <th>@el.EntryData.ToString("dd-MM-yyyy")</th>
-                <th>@el.FinalData.ToString("dd-MM-yyyy")</th>
-                <th>@el.FinalOfInvestigation</th>
-                <th>@Html.ActionLink("Edytuj", "Edit", "Summary", new { id = el.Id })</th>
-                <th>@Html.ActionLink("Usuń", "Delete", "Summary", new { id = el.Id })</th>
+        <th>@el.RpsNumber</th>
+        <th>@el.RsdNumber</th>
+        <th>@el.EntryData.ToString("dd-MM-yyyy")</th>
+        <th>@el.FinalData.ToString("dd-MM-yyyy")</th>
+        <th>@el.ArticleNumber</th>
+        <th>@el.FinalOfInvestigation</th>
+        <th>@Html.ActionLink("Edytuj", "Edit", "Summary", new { id = el.Id })</th>
+        <th>@Html.ActionLink("Usuń", "Delete", "Summary", new { id = el.Id })</th>
 
-            </tr>
+    </tr>
         }
 
     }

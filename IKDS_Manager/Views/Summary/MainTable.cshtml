@@ -7,37 +7,35 @@
 
 <table class="table table-bordered">
     <tr>
-        <th>#</th>
-        <th>Numer IKD.DS.560.</th>
+        <th>L.dz.</th>
+        <th>Numer IKD.DS.560.</th>     
         <th>Prowadzący postępowanie</th>
-
         <th>Nr RPS-I</th>
         <th>Nr RSD-I</th>
         <th>Data Wszczęcia</th>
-        <th>Zakończyć do dnia</th>
-
+        <th>Zakończono w dniu</th>
+        <th>Kwalifikacja prawna</th>
         <th>Sposób zakończenia</th>
-        <th></th>
-        <th></th>
+
+        <th>Data O.Z.</th>
     </tr>
-   
+   @{ int count = 0;}
 
     @foreach (var el in Model.IKDDSModels)
     {
 
         
         <tr class=@(el.RpsNumber != null ? "success" : "warning")>
-            <th>@el.Id</th>
-            <th>@el.IKDDS</th>
+            <th>@(++count)</th>
+            <th>@el.IKDDS</th>           
             <th>@el.OfficerName</th>
-
             <th>@el.RpsNumber</th>
             <th>@el.RsdNumber</th>
-            <th>@el.EntryData.ToString("dd-MM-yyyy")</th>
-            <th>@el.FinalData.ToString("dd-MM-yyyy")</th>
+            <th>@el.EntryData</th>
+            <th>@el.RealEndDate</th>
+            <th>@el.ArticleNumber</th>
             <th>@el.FinalOfInvestigation</th>
-            <th>@Html.ActionLink("Edytuj", "Edit", "Summary", new { id = el.Id })</th>
-            <th>@Html.ActionLink("Usuń", "Delete", "Summary", new { id = el.Id })</th>
+            <th>@el.OZDate</th>
 
         </tr>
     }

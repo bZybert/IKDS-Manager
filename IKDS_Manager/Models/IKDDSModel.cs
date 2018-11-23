@@ -41,16 +41,30 @@ namespace IKDS_Manager.Models
         [Display(Name = "Data wszczęcia")]
         public DateTime EntryData { get; set; }
 
-        [Display(Name = "Data zakończenia")]
+        [Display(Name = "Przewidywana data zakończenia")]
         public DateTime FinalData { get; set; }
 
 
         [Display(Name = "Połączenie postępowań")]
         public bool JoinWithOtherInvestigation { get; set; }
 
-
-
         [Display(Name = "Decyzja")]
         public string FinalOfInvestigation { get; set; }
+
+        [Display(Name = "Data wprowadzenia do systemu")]
+        public DateTime AddedInSystem { get; set; }
+
+        [Display(Name = "Data O.Z.")]
+        public DateTime? OZDate { get; set; }
+
+        [Display(Name = "Data zakończenia")]
+        public DateTime? RealEndDate { get; set; }
+
+        [Display(Name = "Kwalifikacja prawna")]
+        public string ArticleNumber { get; set; }
+
+
+
+
     }
 }

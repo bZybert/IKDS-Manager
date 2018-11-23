@@ -23,6 +23,9 @@
     @Html.LabelFor(x => x.RsdNumber)
     @Html.TextBoxFor(x => x.RsdNumber, new { @class = "form-control" })
 
+    @Html.LabelFor(x => x.ArticleNumber)
+    @Html.TextBoxFor(x => x.ArticleNumber, new { @class = "form-control" })
+
 
     @Html.LabelFor(x => x.EntryData)
     @Html.TextBoxFor(x => x.EntryData, "{0:d MM yyyy}", new { @class = "form-control date-p", @name = "date" })
@@ -30,10 +33,17 @@
 
 
     @Html.LabelFor(x => x.FinalData)
-    @Html.TextBoxFor(x => x.FinalData, "{0:d MM yyyy}", new { @class = "form-control date-p", @name="date" })
+    @Html.TextBoxFor(x => x.FinalData, "{0:d MM yyyy}", new { @class = "form-control date-p", @name = "date" })
 
     @Html.LabelFor(x => x.FinalOfInvestigation)
     @Html.TextAreaFor(x => x.FinalOfInvestigation, new { @class = "form-control" })
+
+    @Html.LabelFor(x => x.RealEndDate)
+    @Html.TextBoxFor(x => x.RealEndDate, "{0:d MM yyyy}", new { @class = "form-control date-p" })
+
+
+    @Html.LabelFor(x => x.OZDate)
+    @Html.TextBoxFor(x => x.OZDate, "{0:d MM yyyy}", new { @class = "form-control date-p" })
 
     @Html.HiddenFor(m => m.Id)
 

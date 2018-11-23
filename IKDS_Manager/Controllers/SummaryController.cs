@@ -61,6 +61,9 @@ namespace IKDDS_Manager.Controllers
             toUpdate.FinalData = ikddsmodel.FinalData;
             toUpdate.FinalOfInvestigation = ikddsmodel.FinalOfInvestigation;
             toUpdate.IKDDS = ikddsmodel.IKDDS;
+            toUpdate.OZDate = ikddsmodel.OZDate;
+            toUpdate.ArticleNumber = ikddsmodel.ArticleNumber;
+            toUpdate.RealEndDate = ikddsmodel.RealEndDate;
 
             _context.SaveChanges();
             var invest = _context.IKDDSModels.Include(x => x.InvestigationType).ToList();

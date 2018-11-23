@@ -61,7 +61,9 @@ namespace IKDS_Manager.Controllers
                 ikddsmodel.FinalData = ikddsmodel.EntryData.AddDays(60);
                 //ikddsmodel.InvestigationType.Type = "RPS/RSD";
             }
-
+            ikddsmodel.AddedInSystem = DateTime.Now;
+            ikddsmodel.OZDate = null;
+            ikddsmodel.RealEndDate = null;
             _context.IKDDSModels.Add(ikddsmodel);
             _context.SaveChanges();
             return RedirectToAction("MainTable", "Summary");
