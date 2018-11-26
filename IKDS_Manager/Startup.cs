@@ -38,7 +38,7 @@ namespace IKDS_Manager
             services.AddIdentity<IdentityUser, IdentityRole>()
             .AddEntityFrameworkStores<EFCContext>();
             services.AddMvc();
-
+           
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

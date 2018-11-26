@@ -18,7 +18,7 @@ namespace IKDS_Manager.Models
 
         [Required]
         [Display(Name = "Policjant prowadzący")]
-        public string OfficerName { get; set; } = "Janik";
+        public string OfficerName { get; set; }
 
         [Display(Name = "Typ postępowania")]
         public InvestigationType InvestigationType { get; set; }
