@@ -12,10 +12,12 @@ namespace IKDDS_Manager.Controllers
     public class AccountController : Controller
     {
         protected UserManager<IdentityUser> UserManager { get; }
+        protected SignInManager<IdentityUser> SignInManager { get; }
 
-        public AccountController(UserManager<IdentityUser> userManager)
+        public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             UserManager = userManager;
+            SignInManager = signInManager;
         }
 
         [HttpGet]
@@ -25,12 +27,13 @@ namespace IKDDS_Manager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser(viewModel.Account.Login) { Email = viewModel.Account.Email };
-                var result = await UserManager.CreateAsync(user, viewModel.Account.Password);
+                var user = new IdentityUser(viewModel.User.Login) { Email = viewModel.User.Login };
+                var result = await UserManager.CreateAsync(user, viewModel.User.Password);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
@@ -42,6 +45,39 @@ namespace IKDDS_Manager.Controllers
             }
 
             return View(viewModel);
+        }
+
+        public IActionResult Login(string returnUrl)
+        {
+            return View(new RegisterViewModel() {
+                ReturnUrl = returnUrl
+            });
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(RegisterViewModel viewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await SignInManager.PasswordSignInAsync(viewModel.User.Login,
+                viewModel.User.Password, viewModel.User.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Nie można się zalogować!");
+                }
+            }
+            return View(viewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await SignInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
