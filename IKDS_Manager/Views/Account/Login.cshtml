@@ -11,18 +11,23 @@
     @Html.ValidationSummary(true, "Pola zaznaczone na czerwono są wymagane")
 
 
-    @Html.LabelFor(x => x.User.Login)
-    @Html.TextBoxFor(x => x.User.Login, new { @class = "form-control" })
+    @Html.LabelFor(x => x.Login)
+    @Html.TextBoxFor(x => x.Login, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Login)
+
+    @Html.LabelFor(x => x.Password)
+    @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "Password" })
+    @Html.ValidationMessageFor(x => x.Password)
 
 
-    @Html.LabelFor(x => x.User.Password)
-    @Html.TextBoxFor(x => x.User.Password, new { @class = "form-control" })
+
+    @Html.LabelFor(x => x.RememberMe)
+    @Html.CheckBoxFor(x => x.RememberMe, new { @class = "checkbox" })
+
+    <br />
 
 
-    @Html.LabelFor(x => x.User.RememberMe)
-    @Html.CheckBoxFor(x => x.User.RememberMe, new { @class = "form-control" })
 
-    @Html.HiddenFor(m => m.User.Id)
 
-    <button type="submit" class="btn btn-primary">Zarejestruj</button>
+    <button type="submit" class="btn btn-primary">Zaloguj</button>
 }

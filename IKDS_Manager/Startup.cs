@@ -55,7 +55,7 @@ namespace IKDS_Manager
                 app.UseHsts();
             }
             app.UseAuthentication();
-            app.UseMvcWithDefaultRoute();
+            //app.UseMvcWithDefaultRoute();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();

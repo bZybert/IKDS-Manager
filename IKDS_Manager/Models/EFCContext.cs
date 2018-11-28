@@ -1,4 +1,5 @@
 ﻿using IKDS_Manager.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -8,11 +9,13 @@ using System.Threading.Tasks;
 
 namespace IKDDS_Manager.Models
 {
-    public class EFCContext : IdentityDbContext
+   
+    public class EFCContext : IdentityDbContext<IdentityUser>
     {
-       public DbSet<IKDDSModel> IKDDSModels { get; set; }
-      // public DbSet<InvestigationInitiateType> InvestigationInitiateTypes { get; set; }
-       public DbSet<InvestigationType> InvestigationType { get; set; }
+        public DbSet<IKDDSModel> IKDDSModels { get; set; }
+        // public DbSet<InvestigationInitiateType> InvestigationInitiateTypes { get; set; }
+        public DbSet<InvestigationType> InvestigationType { get; set; }
+       
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

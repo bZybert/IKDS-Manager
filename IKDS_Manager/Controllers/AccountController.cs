@@ -32,8 +32,8 @@ namespace IKDDS_Manager.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser(viewModel.User.Login) { Email = viewModel.User.Login };
-                var result = await UserManager.CreateAsync(user, viewModel.User.Password);
+                var user = new IdentityUser(viewModel.Login) { Email = viewModel.Login };
+                var result = await UserManager.CreateAsync(user, viewModel.Password);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
@@ -49,9 +49,12 @@ namespace IKDDS_Manager.Controllers
 
         public IActionResult Login(string returnUrl)
         {
-            return View(new RegisterViewModel() {
+            return View(new RegisterViewModel()
+            {
                 ReturnUrl = returnUrl
             });
+              
+            
         }
 
         [HttpPost]
@@ -59,8 +62,8 @@ namespace IKDDS_Manager.Controllers
         {
             if (ModelState.IsValid)
             {
-                var result = await SignInManager.PasswordSignInAsync(viewModel.User.Login,
-                viewModel.User.Password, viewModel.User.RememberMe, false);
+                var result = await SignInManager.PasswordSignInAsync(viewModel.Login,
+                viewModel.Password, viewModel.RememberMe, false);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");

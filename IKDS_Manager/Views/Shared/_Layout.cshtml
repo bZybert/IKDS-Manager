@@ -35,8 +35,7 @@
                     <li><a asp-area="" asp-controller="RPS" asp-action="RpsTable">RPS</a></li>
                     <li><a asp-area="" asp-controller="RSD" asp-action="RsdTable">RSD</a></li>
                     <li><a asp-area="" asp-controller="Summary" asp-action="MainTable">Podsumowanie</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Register">Rejestracja</a></li>
-                    <li><a asp-area="" asp-controller="Account" asp-action="Login">Logowanie</a></li>
+                    @await Html.PartialAsync("LoginPartial")
                 </ul>
             </div>
         </div>
