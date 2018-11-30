@@ -8,33 +8,56 @@
 {
     @Html.ValidationSummary(true, "Pola zaznaczone na czerwono są wymagane")
 
+    <div class="form-inline">
+        @Html.LabelFor(x => x.IKDDSModel.IKDDS, new { @class = "col-sm-3 control-label" })
+        @Html.TextBoxFor(x => x.IKDDSModel.IKDDS, new { @class = "form-control" })
 
-    @Html.LabelFor(x => x.IKDDSModel.IKDDS)
-    @Html.TextBoxFor(x => x.IKDDSModel.IKDDS, new { @class = "form-control"})
+    </div>
+
+    <br />
+
+    <div class="form-inline">
+        @Html.LabelFor(x => x.IKDDSModel.OfficerName, new { @class = "col-sm-3 control-label" })
+        @Html.TextBoxFor(x => x.IKDDSModel.OfficerName, new { @class = "form-control" })
+    </div>
+    <br />
+
+    <div class="form-inline">
+        @Html.LabelFor(x => x.IKDDSModel.RpsNumber, new { @class = "col-sm-3 control-label" })
+        @Html.TextBoxFor(x => x.IKDDSModel.RpsNumber, new { @class = "form-control" })
+    </div>
+    <br />
+
+    <div class="form-inline">
+        @Html.LabelFor(x => x.IKDDSModel.RsdNumber, new { @class = "col-sm-3 control-label" })
+        @Html.TextBoxFor(x => x.IKDDSModel.RsdNumber, new { @class = "form-control" })
+    </div>
+    <br />
+
+    <div class="form-inline">
+        @Html.LabelFor(x => x.IKDDSModel.EntryData, new { @class = "col-sm-3 control-label" })
+        @Html.TextBoxFor(x => x.IKDDSModel.EntryData, "{0:d MM yyyy}", new { @class = "form-control date-p", @id = "date", @name = "date", placeholder = "data zakończenia" })
+        @Html.ValidationMessageFor(x => x.IKDDSModel.EntryData)
+    </div>
+    <br />
+
+    <div class="form-inline">
+        @Html.LabelFor(x => x.IKDDSModel.FinalData, new { @class = "col-sm-3 control-label" })
+        @Html.TextBoxFor(x => x.IKDDSModel.FinalData, "{0:d MM yyyy}", new { @class = "form-control date-p", placeholder = "data zakończenia" })
+
+    </div>
+
+    <br />
 
 
 
-    @Html.LabelFor(x => x.IKDDSModel.OfficerName)
-    @Html.TextBoxFor(x => x.IKDDSModel.OfficerName, new { @class = "form-control" })
 
 
 
 
-    @Html.LabelFor(x => x.IKDDSModel.RpsNumber)
-    @Html.TextBoxFor(x => x.IKDDSModel.RpsNumber, new { @class = "form-control" })
 
 
-    @Html.LabelFor(x => x.IKDDSModel.RsdNumber)
-    @Html.TextBoxFor(x => x.IKDDSModel.RsdNumber, new { @class = "form-control" })
 
-
-    @Html.LabelFor(x => x.IKDDSModel.EntryData)
-    @Html.TextBoxFor(x => x.IKDDSModel.EntryData, "{0:d MM yyyy}", new { @class = "form-control date-p", @id = "date", @name = "date", placeholder = "data zakończenia" })
-    @Html.ValidationMessageFor(x => x.IKDDSModel.EntryData)
-
-
-    @Html.LabelFor(x => x.IKDDSModel.FinalData)
-    @Html.TextBoxFor(x => x.IKDDSModel.FinalData, "{0:d MM yyyy}", new { @class = "form-control date-p", placeholder = "data zakończenia" })
 
     @Html.HiddenFor(m => m.IKDDSModel.Id)
 

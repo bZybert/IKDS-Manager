@@ -47,12 +47,14 @@ namespace IKDDS_Manager.Controllers
             return View(viewModel);
         }
 
-        public IActionResult Login(string returnUrl)
+        public IActionResult Login()
         {
+            /*
             return View(new RegisterViewModel()
             {
                 ReturnUrl = returnUrl
-            });
+            });*/
+            return View();
               
             
         }
@@ -60,6 +62,7 @@ namespace IKDDS_Manager.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(RegisterViewModel viewModel)
         {
+            /*
             if (ModelState.IsValid)
             {
                 var result = await SignInManager.PasswordSignInAsync(viewModel.Login,
@@ -73,6 +76,27 @@ namespace IKDDS_Manager.Controllers
                     ModelState.AddModelError("", "Nie można się zalogować!");
                 }
             }
+            return View(viewModel);*/
+
+            if (!ModelState.IsValid)
+            {
+                return View(viewModel);
+            }
+
+            var user = await UserManager.FindByNameAsync(viewModel.Login);
+            if (user != null)
+            {
+                var result = await SignInManager.PasswordSignInAsync(viewModel.Login, viewModel.Password, false, false);
+                if (result.Succeeded)
+                {
+                   // if (string.IsNullOrEmpty(viewModel.ReturnUrl))
+                        return RedirectToAction("Index", "Home");
+
+                   // return Redirect(viewModel.ReturnUrl);
+                }
+            }
+
+            ModelState.AddModelError("", "Nie można się zalogować!");
             return View(viewModel);
         }
 
