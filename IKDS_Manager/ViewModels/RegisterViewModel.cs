@@ -14,13 +14,13 @@ namespace IKDDS_Manager.ViewModels
         [Display(Name = "Login")]
         public string Login { get; set; }
 
-
+        [Required]
         public string Email { get; set; }
 
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Hasło")]
+        [Display(Name = "Hasło" )]
         public string Password { get; set; }
 
         [Compare("Password", ErrorMessage = "Hasła nie są takie same")]
@@ -28,6 +28,7 @@ namespace IKDDS_Manager.ViewModels
         public string RepeatPassword { get; set; }
 
         public bool RememberMe { get; set; }
+
         public string ReturnUrl { get; set; }
     }
 }

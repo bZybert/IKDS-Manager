@@ -1,4 +1,4 @@
-﻿@model IKDDS_Manager.ViewModels.RegisterViewModel
+﻿@model IKDDS_Manager.ViewModels.LogiViewModel
 @{
     ViewData["Title"] = "Login";
 }
@@ -8,7 +8,6 @@
 @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-group new-form" }))
 {
 
-    @Html.ValidationSummary(true, "Pola zaznaczone na czerwono są wymagane")
 
 
     @Html.LabelFor(x => x.Login)
@@ -23,6 +22,11 @@
 
     @Html.LabelFor(x => x.RememberMe)
     @Html.CheckBoxFor(x => x.RememberMe, new { @class = "checkbox" })
+
+
+    @Html.ValidationSummary()
+
+
 
     <br />
 

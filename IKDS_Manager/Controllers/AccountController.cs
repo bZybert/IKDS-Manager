@@ -32,7 +32,7 @@ namespace IKDDS_Manager.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser(viewModel.Login) { Email = viewModel.Login };
+                var user = new IdentityUser(viewModel.Login) { Email = viewModel.Email };
                 var result = await UserManager.CreateAsync(user, viewModel.Password);
                 if (result.Succeeded)
                 {
@@ -60,9 +60,9 @@ namespace IKDDS_Manager.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(RegisterViewModel viewModel)
+        public async Task<IActionResult> Login(LogiViewModel viewModel)
         {
-            /*
+           
             if (ModelState.IsValid)
             {
                 var result = await SignInManager.PasswordSignInAsync(viewModel.Login,
@@ -76,8 +76,8 @@ namespace IKDDS_Manager.Controllers
                     ModelState.AddModelError("", "Nie można się zalogować!");
                 }
             }
-            return View(viewModel);*/
-
+            return View(viewModel);
+ /*
             if (!ModelState.IsValid)
             {
                 return View(viewModel);
@@ -97,7 +97,7 @@ namespace IKDDS_Manager.Controllers
             }
 
             ModelState.AddModelError("", "Nie można się zalogować!");
-            return View(viewModel);
+            return View(viewModel);*/
         }
 
         [HttpGet]
