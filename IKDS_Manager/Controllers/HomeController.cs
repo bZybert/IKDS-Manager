@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using IKDS_Manager.Models;
 using IKDDS_Manager.Models;
 using IKDDS_Manager.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace IKDS_Manager.Controllers
 {
@@ -23,7 +24,7 @@ namespace IKDS_Manager.Controllers
             _context.Dispose();
         }
 
-       
+       [AllowAnonymous]
         public IActionResult Index()
         {
            
@@ -31,6 +32,7 @@ namespace IKDS_Manager.Controllers
             return View();
         }
         [HttpGet]
+        [Authorize]
         public IActionResult Reminder()
         {
             var today = DateTime.Now.AddDays(6);

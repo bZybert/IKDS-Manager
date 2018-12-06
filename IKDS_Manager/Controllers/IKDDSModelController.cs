@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 using IKDDS_Manager.Models;
 using IKDDS_Manager.ViewModels;
 using IKDS_Manager.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IKDS_Manager.Controllers
 {
+    [Authorize]
     public class IKDDSModelController : Controller
     {
         public readonly EFCContext _context;

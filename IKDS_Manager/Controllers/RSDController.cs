@@ -4,10 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using IKDDS_Manager.Models;
 using IKDDS_Manager.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace IKDS_Manager.Controllers
 {
+    [Authorize]
     public class RSDController : Controller
     {
         public readonly EFCContext _context;

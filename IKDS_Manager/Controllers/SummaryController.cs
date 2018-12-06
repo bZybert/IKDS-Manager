@@ -5,11 +5,13 @@ using System.Threading.Tasks;
 using IKDDS_Manager.Models;
 using IKDDS_Manager.ViewModels;
 using IKDS_Manager.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace IKDDS_Manager.Controllers
 {
+    [Authorize]
     public class SummaryController : Controller
     {
         public readonly EFCContext _context;
@@ -24,6 +26,7 @@ namespace IKDDS_Manager.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult MainTable()
         {
             var invest = _context.IKDDSModels.Include(x => x.InvestigationType).ToList();
